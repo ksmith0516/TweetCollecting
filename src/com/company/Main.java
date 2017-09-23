@@ -9,14 +9,16 @@ public class Main {
         String inFile = "tweets.json";
         String outFile = "hashtags.txt";
         TweetStream tweetStream;
+        ExtractHashtags extractHashtags;
 
-        File file = new File(inFile);
+        File in = new File(inFile);
+        File out = new File(outFile);
 
-        if(!file.exists()) {
+        if(!in.exists()) {
             tweetStream = new TweetStream(inFile, outFile);
         }
-        else {
-            ExtractHashtags extractHashtags = new ExtractHashtags(inFile, outFile);
+        else if (!out.exists()){
+            extractHashtags = new ExtractHashtags(inFile, outFile);
         }
     }
 }
